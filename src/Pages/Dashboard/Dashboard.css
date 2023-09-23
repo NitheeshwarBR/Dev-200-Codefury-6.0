@@ -12,6 +12,10 @@
     white-space: nowrap;
     padding:10px;
     color: rgb(73, 73, 73);
+    max-width: 250px;
+    word-wrap:break-word;
+    white-space: wrap;
+    overflow: hidden;
 }
 .dashboard-table tr{
     padding:5px;

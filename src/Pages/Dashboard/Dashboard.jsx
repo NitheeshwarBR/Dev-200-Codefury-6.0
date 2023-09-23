@@ -43,7 +43,7 @@ function Dashboard() {
                 <td>
                   {
                     item.screenshots.map(pic=>{
-                      return <div><a href={item.imageURl} target="_blank">Image</a></div>
+                      return <div><a href={pic} target="_blank">Image</a></div>
                     })
                   }
                 </td>

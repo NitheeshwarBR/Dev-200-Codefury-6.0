@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@mui/material';
+import { Button, LinearProgress } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
@@ -9,9 +9,12 @@ import MenuItem from '@mui/material/MenuItem'
 import Input from '@mui/material/Input';
 import './Signup.css';
 
+import storage from "../APIs/firebase_credentials"
+import { ref, getDownloadURL, uploadBytesResumable } from "@firebase/storage"
 
 import axios_client from "../APIs/AxiosClient"
-
+import { useContext } from 'react';
+import AppContext from '../contexts/AppContext'
 
 const domains = [
     {
@@ -37,12 +40,22 @@ const domains = [
 ];
 
 function OnlineHarrasment() {
+
+    const { user } = useContext(AppContext)
+
     const [images, setImages] = useState([]);
     const [imagePreviews, setImagePreviews] = useState([]);
     const [phone, setPhone] = useState('');
     const [description, setDescription] = useState('');
     const [profileLink, setProfileLink] = useState('');
     const [domain, setDomain] = useState('')
+
+    const [isFileUploading, setIsFileUploading] = useState(false)
+    const [fileUpoadProgress, setFileUploadProgress] = useState(0)
+    const [showSnackbar, setShowSnackbar] = useState(false)
+    const [snackbarSeverity, setSnackbarSeverity] = useState("success")
+    const [snapbarMessage, setSnackbarMessage] = useState();
+
 
     const handleImageUpload = (event) => {
         const uploadedImages = Array.from(event.target.files);
@@ -51,19 +64,69 @@ function OnlineHarrasment() {
         const imageUrls = uploadedImages.map((image) => URL.createObjectURL(image));
         setImagePreviews(imageUrls);
     };
-    const handleSubmitComplaint = async() => {
+
+    const handleSubmitComplaint = async () => {
+        const urls = []
+        for await (let image of images) {
+            urls.push(await uploadFile(image))
+        }
+        console.log(urls)
+
         try {
-            const data={}
-            await axios_client.post("/harassments/raise-complaint",data)
+            console.log("uploading to server")
+            const data = { victimId: "650e74f9201567c21af0075d" || user._id, domain, description, phone, screenshots: urls }
+            console.log(data)
+            await axios_client.post("/harassments/raise-complaint", data)
             alert("Success")
-          } catch (err) {
+        } catch (err) {
             console.log(err)
-          }
+        }
+    }
+    function uploadFile(file) {
+        const promise = new Promise(function (resolve, reject) {
+            console.log(storage)
+            setFileUploadProgress(0)
+            setIsFileUploading(true)
+            const storageRef = ref(storage, file.name)
+            const uploadTask = uploadBytesResumable(storageRef, file)
+            uploadTask.on("state_changed", (snapshot) => {
+                const per = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                // console.log(per)
+                setFileUploadProgress(per)
+            }, (err) => {
+                console.log(err)
+                setSnackbarSeverity("error")
+                setSnackbarMessage("Cannot upload file")
+                reject(err)
+            }, async () => {
+                const url = await getDownloadURL(uploadTask.snapshot.ref)
+                // console.log(url)
+                setSnackbarSeverity("success")
+                setSnackbarMessage("File uploaded successfully")
+                setShowSnackbar(true)
+                setFileUploadProgress(0)
+                setIsFileUploading(false)
+                resolve(url)
+            })
+        })
+        return promise;
     }
 
-    
+
     return (
         <div className='signup-page'>
+            <Snackbar
+                open={showSnackbar}
+                autoHideDuration={3000}
+                onClose={() => setShowSnackbar(false)}
+            >
+                <Alert
+                    onClose={() => setShowSnackbar(false)}
+                    severity={snackbarSeverity}
+                    sx={{ width: '100%' }}>
+                    {snapbarMessage}
+                </Alert>
+            </Snackbar>
             <div className='signup-main'>
                 <div className='headers'>
                     <h2>Online Harrasment</h2>
@@ -127,7 +190,7 @@ function OnlineHarrasment() {
                             id='outlined-required'
                             label='profileLink'
                             value={profileLink}
-                            onChange={(e) => { profileLink(e.target.value) }}
+                            onChange={(e) => { setProfileLink(e.target.value) }}
 
                         />
                     </div>
@@ -151,7 +214,10 @@ function OnlineHarrasment() {
                         </Button>
                     </div>
                 </form>
-
+                {
+                    // isFileUploading &&
+                    <LinearProgress variant="determinate" color="success" value={fileUpoadProgress} size="large" sx={{ height: 10, borderRadius: 5, margin: "10px" }} />
+                }
             </div>
             <div className="image-preview-container">
                 <h3 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Screenshots (Preview)</h3>
@@ -159,6 +225,7 @@ function OnlineHarrasment() {
                     <img key={index} src={previewUrl} alt={`Image ${index + 1}`} className="image-preview" style={{ width: '100%', height: '340px' }} />
                 ))}
             </div>
+
 
         </div>
     );
