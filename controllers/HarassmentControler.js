@@ -1,6 +1,7 @@
 const HarassmentModel=require("../models/HarassmentModel")
 async function raiseComplaint(req,res){
     const {victimId,domain,description,phone,profileLink,screenshots}=req.body;
+    console.log({victimId,domain,description,phone,profileLink,screenshots})
     try{
         const complaint=new HarassmentModel({victimId,domain,description,phone,profileLink,screenshots})
         const complaintInstanc=await complaint.save()
