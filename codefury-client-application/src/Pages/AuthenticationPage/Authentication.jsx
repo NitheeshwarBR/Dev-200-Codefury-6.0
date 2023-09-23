@@ -12,7 +12,7 @@ import { useContext } from 'react';
 import AppContext from '../../contexts/AppContext'
 
 function Authentication() {
-    const {setIsLoggedIn,setUser}=useContext(AppContext)
+    const { setIsLoggedIn, setUser } = useContext(AppContext)
 
     const [firstname, setFirstName] = useState('');
     const [lastname, setLastName] = useState('');
@@ -45,7 +45,7 @@ function Authentication() {
     }
     const handleSignupClick = async () => {
         try {
-            const {data}=await axios_client.post("/auth/register", { firstName: firstname, lastName: lastname, email, phone, password })
+            const { data } = await axios_client.post("/auth/register", { firstName: firstname, lastName: lastname, email, phone, password })
             setIsLoggedIn(true)
             setUser(data.user)
             setOpen(true)
@@ -71,9 +71,9 @@ function Authentication() {
         //     console.log(error)
         // }
     }
-    const handleLoginClick = async () => { 
+    const handleLoginClick = async () => {
         try {
-            const {data}=await axios_client.post("/auth/login", { email,  password })
+            const { data } = await axios_client.post("/auth/login", { email, password })
             setIsLoggedIn(true)
             setUser(data.user)
             setOpen(true)
@@ -96,91 +96,93 @@ function Authentication() {
                     <p>Accelerate your access to our 'product' and amplify your </p>
                     <p>experience by completing the signup.</p>
                 </div>
+                <div className='additional'>
+                    <form>
+                        <div className='additional'>
+                            <TextField
+                                className='Extra'
+                                required
+                                id='outlined-required'
+                                label='First Name'
+                                value={firstname}
+                                onChange={handleFirstNameChange}
+                            />
+                        </div>
 
-                <form>
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            required
-                            id='outlined-required'
-                            label='First Name'
-                            value={firstname}
-                            onChange={handleFirstNameChange}
-                        />
-                    </div>
+                        &nbsp;&nbsp;
+                        <div className='additional'>
+                            <TextField
+                                className='Extra'
+                                id='outlined-basic'
+                                label='Last Name'
+                                value={lastname}
+                                onChange={handleLastNameChange}
+                            />
+                        </div>
 
-                    &nbsp;&nbsp;
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            id='outlined-basic'
-                            label='Last Name'
-                            value={lastname}
-                            onChange={handleLastNameChange}
-                        />
-                    </div>
+                        <br></br>
+                        <div className='additional'>
+                            <TextField
+                                className='Extra'
+                                required
+                                id='outlined-required'
+                                label='Email'
+                                value={email}
+                                onChange={handleEmailNameChange}
+                            />
+                        </div>
 
-                    <br></br>
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            required
-                            id='outlined-required'
-                            label='Email'
-                            value={email}
-                            onChange={handleEmailNameChange}
-                        />
-                    </div>
+                        <br></br>
+                        <div className='additional'>
+                            <TextField
+                                className='Extra'
+                                required
+                                id='outlined-required'
+                                label='Mobile Number'
+                                value={phone}
+                                onChange={handlePhoneNameChange}
+                            />
+                        </div>
 
-                    <br></br>
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            required
-                            id='outlined-required'
-                            label='Mobile Number'
-                            value={phone}
-                            onChange={handlePhoneNameChange}
-                        />
-                    </div>
+                        <br></br>
+                        <div className='additional'>
+                            <TextField
+                                className='Extra'
+                                required
+                                type='passwor'
+                                id='outlined-required'
+                                label='Password'
+                                value={password}
+                                onChange={handlePasswordNameChange}
+                            />
+                        </div>
 
-                    <br></br>
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            required
-                            type='passwor'
-                            id='outlined-required'
-                            label='Password'
-                            value={password}
-                            onChange={handlePasswordNameChange}
-                        />
-                    </div>
+                        <br></br>
+                        <div>
+                            <Stack spacing={2} sx={{ width: '100%' }}>
+                                <div className='additional'>
+                                    <Button variant="contained" id="signupbtn" onClick={handleSignupClick}>
+                                        Create Account
+                                    </Button>
+                                </div>
 
-                    <br></br>
-                    <div>
-                        <Stack spacing={2} sx={{ width: '100%' }}>
-                            <div className='additional'>
-                                <Button variant="contained" id="signupbtn" onClick={handleSignupClick}>
-                                    Create Account
-                                </Button>
-                            </div>
-
-                            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                                    Account Created Successfully
-                                </Alert>
-                            </Snackbar>
-                        </Stack>
-                    </div>
+                                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                                        Account Created Successfully
+                                    </Alert>
+                                </Snackbar>
+                            </Stack>
+                        </div>
 
 
-                    <div className='additional'>
-                        <p>Already a Registered User?</p>
-                        &nbsp;
-                        <Link onClick={changeSignupState} underline='hover' id='authLink'>{'Login'}</Link>
-                    </div>
-                </form>
+                        <div className='additional'>
+                            <p>Already a Registered User?</p>
+                            &nbsp;
+                            <Link onClick={changeSignupState} underline='hover' id='authLink'>{'Login'}</Link>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         );
     } else {
@@ -191,47 +193,50 @@ function Authentication() {
                     <p>Enhance your engagement and unlock the full potential of our 'product'</p>
                     <p>by entering your <b>Login Credentials</b> </p>
                 </div>
-                <form>
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            required
-                            id='outlined-required'
-                            label='Email'
-                        />
-                    </div>
-                    <br /> <br />
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            required
-                            id='outlined-required'
-                            label='Password'
-                        />
-                    </div>
-                    <div>
-                        <Stack spacing={2} sx={{ width: '100%' }}>
-                            <div className='additional'>
-                                <Button variant="contained" id="signupbtn" onClick={handleLoginClick}>
-                                    Login
-                                </Button>
-                            </div>
+                <div className='additional'>
+                    <form>
+                        <div className='additional'>
+                            <TextField
+                                className='Extra'
+                                required
+                                id='outlined-required'
+                                label='Email'
+                            />
+                        </div>
+                        <br/>
+                        <div className='additional'>
+                            <TextField
+                                className='Extra'
+                                required
+                                id='outlined-required'
+                                label='Password'
+                            />
+                        </div>
+                        <div>
+                            <Stack spacing={2} sx={{ width: '100%' }}>
+                                <div className='additional'>
+                                    <Button variant="contained" id="signupbtn" onClick={handleLoginClick}>
+                                        Login
+                                    </Button>
+                                </div>
 
-                            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-                                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                                    Login Successful
-                                </Alert>
-                            </Snackbar>
-                        </Stack>
-                    </div>
-                    <div className='additional'>
-                        <p>Create a New Account ?</p>
-                        &nbsp;
-                        <Link onClick={changeSignupState} underline='hover' id='authLink'>
-                            {'Signup'}
-                        </Link>
-                    </div>
-                </form>
+                                <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+                                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                                        Login Successful
+                                    </Alert>
+                                </Snackbar>
+                            </Stack>
+                        </div>
+                        <div className='additional'>
+                            <p>Create a New Account ?</p>
+                            &nbsp;
+                            <Link onClick={changeSignupState} underline='hover' id='authLink'>
+                                {'Signup'}
+                            </Link>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         );
     }

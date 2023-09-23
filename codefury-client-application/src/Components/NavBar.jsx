@@ -13,13 +13,17 @@ function NavBar() {
                         <Link href="/online-harassment" underline="hover" className="Links">
                             {'Online Harassment'}
                         </Link>
-                        <Link href="/chatBot" underline="hover" className="Links">
+                        <Link href="/chat-Bot" underline="hover" className="Links">
                             {'ChatBot'}
                         </Link>
                         <Link href="/about-team" underline="hover" className="Links">
                             {'About Team'}
                         </Link>
+                        <Link href="/live-meditation" underline="hover" className="Links">
+                            {'Live Meditation'}
+                        </Link>
                     </div>
+
                 </div>
             </div>
         </div>

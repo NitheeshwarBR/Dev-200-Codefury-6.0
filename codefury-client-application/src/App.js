@@ -6,6 +6,8 @@ import MainPage from './Pages/MainPage/MainPage';
 import OnlineHarrasment from './Pages/OnlineHarrasmentPage/OnlineHarassment';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import AboutTeam from './Pages/AboutTeamPage/AboutTeam';
+import ChatBot from './Pages/ChatBotPage/ChatBot';
+import LiveMeditation from './Pages/MeditationPages/LiveMeditation';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -27,6 +29,8 @@ function App() {
           <Route path='/online-harassment' element={<OnlineHarrasment/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/about-team' element={<AboutTeam/>}/>
+          <Route path='/chat-Bot' element={<ChatBot/>}/>
+          <Route path='/live-meditation' element={<LiveMeditation/>}/>
         </Routes>
 
       </div>
