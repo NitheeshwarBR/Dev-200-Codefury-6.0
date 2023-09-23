@@ -6,7 +6,7 @@ import ErrorPage from './Components/ErrorPage';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import AppContext from './contexts/AppContext';
 import { useState } from 'react';
-
+import LiveMeditationRoom from './Pages/LiveMeditationRoom/LiveMeditationRoom';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(null)
@@ -23,6 +23,7 @@ function App() {
           <Route path='/authentication' element={<Signup />} />
           <Route path='/online-harrasment' element={<OnlineHarrasment />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/live-meditation-room" element={<LiveMeditationRoom />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
 
