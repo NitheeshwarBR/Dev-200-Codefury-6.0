@@ -2,7 +2,7 @@
     display:block;
     width:590px;
     margin-top:20vh;
-    margin-left: 45vw;
+    margin-left: 37vw;
     height: max-content;
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
@@ -34,6 +34,7 @@
 }
 #authLink{
     cursor: pointer;
+    margin-left: -100%;
 }
 .signup-page{
     display: flex;

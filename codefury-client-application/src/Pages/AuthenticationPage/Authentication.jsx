@@ -5,13 +5,13 @@ import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 import Alert from '@mui/material/Alert'
-import '../AuthenticationPage/Authentication.css';
+import './Signup.css';
 
 import axios_client from '../../APIs/AxiosClient';
 import { useContext } from 'react';
 import AppContext from '../../contexts/AppContext'
-function Authentication() {
 
+function Authentication() {
     const {setIsLoggedIn,setUser}=useContext(AppContext)
 
     const [firstname, setFirstName] = useState('');
@@ -237,4 +237,4 @@ function Authentication() {
     }
 }
 
-export default Authentication;
+export default Authentication

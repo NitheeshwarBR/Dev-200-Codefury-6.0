@@ -19,7 +19,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<MainPage/>}/>
-          <Route path='/authentication' element={<Authentication/>} />
+          <Route path='/Auth' element={<Authentication/>} />
           {/* <Route path='/online-harrasment' element={<OnlineHarrasment />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='*' element={<ErrorPage />} /> */}
