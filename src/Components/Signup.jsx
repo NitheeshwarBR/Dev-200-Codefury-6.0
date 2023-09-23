@@ -7,7 +7,13 @@ import Link from '@mui/material/Link';
 import Alert from '@mui/material/Alert'
 import './Signup.css';
 
+import axios_client from '../APIs/AxiosClient';
+import { useContext } from 'react';
+import AppContext from '../contexts/AppContext'
 function Signup() {
+
+    const {setIsLoggedIn,setUser}=useContext(AppContext)
+
     const [firstname, setFirstName] = useState('');
     const [lastname, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -39,35 +45,47 @@ function Signup() {
     }
     const handleSignupClick = async () => {
         try {
-            const respone = await fetch('http://localhost:3030/auth/register', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-
-                body: JSON.stringify({ firstName: firstname, lastName: lastname, email, phone, password })
-            });
-            if (respone.ok) {
-                setOpen(true)
-                setIsSignedUp(false)
-            }
-
-        }catch(error){
-            console.log(error)
+            const {data}=await axios_client.post("/auth/register", { firstName: firstname, lastName: lastname, email, phone, password })
+            setIsLoggedIn(true)
+            setUser(data.user)
+            setOpen(true)
+        } catch (err) {
+            console.log(err)
         }
-        
-        
+        // try {
+        //     // const respone = await fetch('http://localhost:3030/auth/register', {
+        //     //     method: "POST",
+        //     //     headers: {
+        //     //         'Content-Type': 'application/json'
+        //     //     },
 
+        //     //     body: JSON.stringify({ firstName: firstname, lastName: lastname, email, phone, password })
+        //     // });
+
+        //     if (respone.ok) {
+        //         setOpen(true)
+        //         setIsSignedUp(false)
+        //     }
+
+        // }catch(error){
+        //     console.log(error)
+        // }
     }
-    const handleLoginClick = () => {
-
-        setOpen(true)
+    const handleLoginClick = async () => { 
+        try {
+            const {data}=await axios_client.post("/auth/login", { email,  password })
+            setIsLoggedIn(true)
+            setUser(data.user)
+            setOpen(true)
+            console.log(data)
+        } catch (err) {
+            console.log(err)
+        }
     }
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
-
         setOpen(false);
     };
     if (!isSignedUp) {

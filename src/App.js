@@ -1,11 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import {Routes ,Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Signup from './Components/Signup';
 import OnlineHarrasment from './Components/OnlineHarrasment';
 import ErrorPage from './Components/ErrorPage';
-import ChatApp from './Components/ChatApp';
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState(null)
+
+  const globaldata = {
+    isLoggedIn, setIsLoggedIn,
+    user, setUser
+  };
   return (
     <div className="App">
       <Routes>
