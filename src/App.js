@@ -4,6 +4,7 @@ import {Routes ,Route} from 'react-router-dom'
 import Signup from './Components/Signup';
 import OnlineHarrasment from './Components/OnlineHarrasment';
 import ErrorPage from './Components/ErrorPage';
+import ChatApp from './Components/ChatApp';
 function App() {
   return (
     <div className="App">
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" />
         <Route path='/authentication' element={<Signup/>}/>
         <Route path='/online-harrasment' element={<OnlineHarrasment/>}/>
+        <Route path='/chatBot' element={<ChatApp/>}/>
         <Route path='*' element={<ErrorPage/>}/>
       </Routes>
       
