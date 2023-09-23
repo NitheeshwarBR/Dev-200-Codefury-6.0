@@ -10,7 +10,7 @@
     justify-content: end;
     margin-top: 35px;
     height: 45px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
     width: 45vw;
     border-radius: 10px;
 }

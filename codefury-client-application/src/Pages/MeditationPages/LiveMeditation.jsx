@@ -3,8 +3,9 @@ import "./LiveMeditation.css"
 import { io } from 'socket.io-client';
 import { Peer } from "peerjs";
 import { useRef } from "react";
+import { Button, LinearProgress } from '@mui/material';
 function LiveMeditation() {
-  const [sid, setSid] = useState(null)
+    const [sid, setSid] = useState(null)
     const [pid, setPid] = useState(null)
     const [activeMeditations, setActiveMeditations] = useState(null)
     const [peerConnection, setPeerConnection] = useState(null)
@@ -39,7 +40,7 @@ function LiveMeditation() {
             setPid(id)
         });
         peer.on("error", (err) => {
-            alert("peer connection error");
+            // alert("peer connection error");
             console.log(err);
         });
 
@@ -50,11 +51,11 @@ function LiveMeditation() {
             console.log("videostream", videoStream.current)
             call.answer(videoStream.current);
 
-            let conn=false;
+            let conn = false;
             var video = document.createElement("video");
             call.on("stream", (remoteStream) => {
                 if (!conn) {
-                    conn=true;
+                    conn = true;
                     addVideoToGrid(remoteStream, video);
                     console.log("remoteStream=", remoteStream);
                 }
@@ -100,7 +101,7 @@ function LiveMeditation() {
                 var video = document.createElement("video");
                 video.muted = true;
                 addVideoToGrid(stream, video);
-                video.className="self"
+                video.className = "self"
             })
             .catch((err) => {
                 console.log("error occured during accessing local camera", err);
@@ -110,7 +111,7 @@ function LiveMeditation() {
     async function connectToEvent(pid) {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         var video1 = document.createElement("video");
-        video1.className="self"
+        video1.className = "self"
         addVideoToGrid(stream, video1);
         // const call = peerConnection.call(pid,new MediaStream(), {
         //     constraints: {
@@ -121,10 +122,10 @@ function LiveMeditation() {
         const call = peerConnection.call(pid, stream);
         console.log("call", call)
         var video = document.createElement("video");
-        var conn=false;
+        var conn = false;
         call.on("stream", (remoteStream) => {
             if (!conn) {
-                conn=true;
+                conn = true;
                 addVideoToGrid(remoteStream, video);
                 console.log("remoteStream=", remoteStream);
             }
@@ -135,13 +136,21 @@ function LiveMeditation() {
         });
     }
     return (
-        <div>
+        <div >
             <h1>Live Meditation Room</h1>
-            <input type="text" placeholder="Event Organizer Name" id="organizer" />
-            <input type="text" placeholder="Purpose of the Event" id="purpose" />
-            <button onClick={hostEvent}>Host Live Meditation</button>
-            <h2>SocketId : {sid}</h2>
-            <h2>PeerId : {pid}</h2>
+            <div className="input-values-div">
+                <input className="input-text" type="text" placeholder="Event Organizer Name" id="organizer" />
+                &nbsp;&nbsp;
+                <input className="input-text" type="text" placeholder="Purpose of the Event" id="purpose" />
+            </div>  
+            <div className="button-div">
+                <Button variant="contained" id="hostbtn" onClick={hostEvent}>
+                    Host Live Meditation
+                </Button>
+            </div>
+
+            {/* <h2>SocketId : {sid}</h2>
+            <h2>PeerId : {pid}</h2> */}
 
             <div className="actives">
                 {
@@ -158,7 +167,9 @@ function LiveMeditation() {
                     })
                 }
             </div>
+            <div className="video-class">
             <div id="videoGrid"></div>
+            </div>
         </div>
     )
 }

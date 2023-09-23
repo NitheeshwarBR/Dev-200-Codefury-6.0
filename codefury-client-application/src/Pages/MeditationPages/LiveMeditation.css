@@ -1,10 +1,38 @@
 video{
-    width:300px;
-    height: 300px;
+    width:1000px;
+    height: 500px;
     border: 2px solid blue;
     margin: 10px;
 }
 .self{
-    border: 2px solid green;
+    width: fit-content;
+    border: 3px solid green;
 }
 
+input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    width:25vw;
+    height: 9vh;
+}
+.input-values-div{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+h1{
+    margin-left: 65px;
+}
+.video-class{
+    margin-top: 115px;
+    margin-left: 10vw;
+}

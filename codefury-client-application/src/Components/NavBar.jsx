@@ -19,9 +19,10 @@ function NavBar() {
                         <Link href="/about-team" underline="hover" className="Links">
                             {'About Team'}
                         </Link>
-                        <Link href="/live-meditation" underline="hover" className="Links">
-                            {'Live Meditation'}
+                        <Link href="/therapist" underline="hover" className="Links">
+                            {'Therapist'}
                         </Link>
+                        
                     </div>
 
                 </div>

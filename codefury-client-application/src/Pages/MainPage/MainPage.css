@@ -1,0 +1,30 @@
+.main{
+    overflow: hidden;
+}
+h1{
+    display: flex;
+   
+    align-items: center;
+}
+.header{
+    margin-top: 10vh;
+}
+.button-div{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20vh;
+    padding-left: -15vw;
+    
+}
+#signupbtn{
+   
+    height: 5vh;
+}
+.chatbot{
+    width:95px;
+    height:75px;
+    background-color: aqua;
+    margin-top: 30vh;
+    margin-left: 90vw;
+}

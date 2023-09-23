@@ -1,6 +1,8 @@
 const User = require("../models/UserModel")
+
 const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const { json } = require("express");
 
 exports.register = async (req, res) => {
   try {

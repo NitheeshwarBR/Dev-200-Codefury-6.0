@@ -8,6 +8,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import AboutTeam from './Pages/AboutTeamPage/AboutTeam';
 import ChatBot from './Pages/ChatBotPage/ChatBot';
 import LiveMeditation from './Pages/MeditationPages/LiveMeditation';
+import Therapist from './Pages/TherapistPage/Therapist';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -23,14 +24,12 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage/>}/>
           <Route path='/Auth' element={<Authentication/>} />
-          {/* <Route path='/online-harrasment' element={<OnlineHarrasment />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path='*' element={<ErrorPage />} /> */}
           <Route path='/online-harassment' element={<OnlineHarrasment/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/about-team' element={<AboutTeam/>}/>
           <Route path='/chat-Bot' element={<ChatBot/>}/>
           <Route path='/live-meditation' element={<LiveMeditation/>}/>
+          <Route path='/therapist' element={<Therapist/>}/>
         </Routes>
 
       </div>
