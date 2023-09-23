@@ -5,6 +5,7 @@ import { useState } from 'react';
 import MainPage from './Pages/MainPage/MainPage';
 import OnlineHarrasment from './Pages/OnlineHarrasmentPage/OnlineHarassment';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import AboutTeam from './Pages/AboutTeamPage/AboutTeam';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -25,6 +26,7 @@ function App() {
           <Route path='*' element={<ErrorPage />} /> */}
           <Route path='/online-harassment' element={<OnlineHarrasment/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/about-team' element={<AboutTeam/>}/>
         </Routes>
 
       </div>

@@ -16,6 +16,9 @@ function NavBar() {
                         <Link href="/chatBot" underline="hover" className="Links">
                             {'ChatBot'}
                         </Link>
+                        <Link href="/about-team" underline="hover" className="Links">
+                            {'About Team'}
+                        </Link>
                     </div>
                 </div>
             </div>
