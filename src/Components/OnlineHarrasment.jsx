@@ -35,6 +35,10 @@ const domains = [
 function OnlineHarrasment() {
     const [images, setImages] = useState([]);
     const [imagePreviews, setImagePreviews] = useState([]);
+    const [phone,setPhone]=useState('');
+    const [description,setDescription]=useState('');
+    const[profileLink,setProfileLink]=useState('');
+    const [domain,setDomain]=useState('')
 
     const handleImageUpload = (event) => {
         const uploadedImages = Array.from(event.target.files);
@@ -43,6 +47,9 @@ function OnlineHarrasment() {
         const imageUrls = uploadedImages.map((image) => URL.createObjectURL(image));
         setImagePreviews(imageUrls);
     };
+    const handleSubmitComplaint=()=>{
+        
+    }
 
     return (
         <div className='signup-page'>
@@ -65,6 +72,8 @@ function OnlineHarrasment() {
                             label="Domains"
                             defaultValue="whatsapp"
                             helperText="Please select Domain"
+                            value={domain}
+                            onChange={(e)=>{setDomain(e.target.value)}}
                         >
                             {domains.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
@@ -80,6 +89,8 @@ function OnlineHarrasment() {
                             required
                             id='outlined-required'
                             label='Phone'
+                            value={phone}
+                            onChange={(e)=>{setPhone(e.target.value)}}
                         />
                     </div>
 
@@ -91,6 +102,8 @@ function OnlineHarrasment() {
                             label="Description"
                             placeholder="description"
                             multiline
+                            value={description}
+                            onChange={(e)=>{setDescription(e.target.value)}}
                         />
 
                     </div>
@@ -102,6 +115,8 @@ function OnlineHarrasment() {
                             required
                             id='outlined-required'
                             label='profileLink'
+                            value={profileLink}
+                            onChange={(e)=>{profileLink(e.target.value)}}
 
                         />
                     </div>
@@ -120,7 +135,7 @@ function OnlineHarrasment() {
                     <br></br>
 
                     <div className='additional'>
-                        <Button variant="contained" id="signupbtn" >
+                        <Button variant="contained" id="signupbtn" onClick={handleSubmitComplaint} >
                             Submit Complaint
                         </Button>
                     </div>
