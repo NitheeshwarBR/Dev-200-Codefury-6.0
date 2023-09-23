@@ -7,7 +7,11 @@ h1{
     align-items: center;
 }
 .header{
-    margin-top: 10vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15vh;
+    margin-left: 10vw;
 }
 .button-div{
     display: block;
@@ -18,7 +22,7 @@ h1{
     
 }
 #signupbtn{
-   
+   margin-top: -5vh;
     height: 5vh;
 }
 .chatbot{
@@ -27,4 +31,21 @@ h1{
     background-color: aqua;
     margin-top: 30vh;
     margin-left: 90vw;
+}
+.causes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 95px;
+}
+.issue-header{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.actual-features{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 95px;
 }

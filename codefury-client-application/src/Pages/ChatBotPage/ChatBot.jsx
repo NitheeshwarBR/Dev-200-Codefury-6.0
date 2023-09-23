@@ -8,7 +8,7 @@ function ChatBot() {
 
     const handleOptionClick = async (option) => {
         try {
-            const response = await axios.post('http://localhost:5000/api/option', { option });
+            const response = await axios.post('http://localhost:3030/api/option', { option });
             setMessages([...messages, { content: response.data.message, sender: 'bot' }]);
         } catch (error) {
             console.error('Error selecting option:', error);
@@ -20,7 +20,7 @@ function ChatBot() {
         try {
             setMessages([...messages, { content: messageText, sender: 'user' }]);
 
-            const response = await axios.post('http://localhost:5000/chatgpt', { prompt: messageText });
+            const response = await axios.post('http://localhost:3030/chatgpt', { prompt: messageText });
             setMessages([...messages, { content: response.data.generatedText, sender: 'bot' }]);
         } catch (error) {
             console.error(error);

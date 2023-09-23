@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express();
-const port = 5000 || 3030;
+const port = process.env.PORT || 3030;
 const cors = require('cors');
 const dotenv = require('dotenv');
 const axios = require('axios');
@@ -40,6 +40,7 @@ app.post('/api/option', (req, res) => {
     const selectedOptionResponse = chatbotResponses.options.find(
         option => option.title === selectedOption
     );
+    console.log(selectedOption)
 
     if (selectedOptionResponse) {
         res.json({ message: selectedOptionResponse.response });
@@ -64,11 +65,14 @@ app.post('/chatgpt', async (req, res) => {
     })
         .then(response => {
             const generatedText = response.data.choices[0].text.trim();
+            console.log(generatedText)
             res.json({ generatedText });
         })
         .catch(error => {
+            console.log(error)
             res.status(500).json({ error: error.response.data });
         });
+        
 });
 
 app.use("/peerjs", peerServer);

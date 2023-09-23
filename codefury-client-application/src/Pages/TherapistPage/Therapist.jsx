@@ -6,7 +6,7 @@ function Therapist() {
     const [searchDomain, setSearchDomain] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:5000/therapists')
+        axios.get('http://localhost:3030/therapists')
             .then(response => {
                 setTherapists(response.data);
             })
