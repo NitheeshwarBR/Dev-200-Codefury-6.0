@@ -9,6 +9,10 @@ import MenuItem from '@mui/material/MenuItem'
 import Input from '@mui/material/Input';
 import './Signup.css';
 
+
+import axios_client from "../APIs/AxiosClient"
+
+
 const domains = [
     {
         value: 'instagram',
@@ -47,8 +51,14 @@ function OnlineHarrasment() {
         const imageUrls = uploadedImages.map((image) => URL.createObjectURL(image));
         setImagePreviews(imageUrls);
     };
-    const handleSubmitComplaint = () => {
-
+    const handleSubmitComplaint = async() => {
+        try {
+            const data={}
+            await axios_client.post("/harassments/raise-complaint",data)
+            alert("Success")
+          } catch (err) {
+            console.log(err)
+          }
     }
 
     
