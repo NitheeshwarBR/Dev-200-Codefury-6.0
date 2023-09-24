@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from '@mui/material/Link'
+import {Link} from "react-router-dom"
 import '../Components/NavBar.css'
 function NavBar() {
     return (
@@ -7,19 +7,19 @@ function NavBar() {
             <div className='main-nav'>
                 <div className='navigation'>
                     <div className='links-div'>
-                        <Link href="/Auth" underline="hover" className="Links">
+                        <Link to="/Auth" underline="hover" className="Links">
                             {'Authentication'}
                         </Link>
-                        <Link href="/online-harassment" underline="hover" className="Links">
+                        <Link to="/online-harassment" underline="hover" className="Links">
                             {'Online Harassment'}
                         </Link>
-                        <Link href="/chat-Bot" underline="hover" className="Links">
+                        <Link to="/chat-Bot" underline="hover" className="Links">
                             {'ChatBot'}
                         </Link>
-                        <Link href="/about-team" underline="hover" className="Links">
+                        <Link to="/about-team" underline="hover" className="Links">
                             {'About Team'}
                         </Link>
-                        <Link href="/therapist" underline="hover" className="Links">
+                        <Link to="/therapist" underline="hover" className="Links">
                             {'Therapist'}
                         </Link>
                         

@@ -31,6 +31,7 @@ function ChatBot() {
     return (
         <div className='body-container'>
         <div className='main-container'>
+            <h1>Chatbot</h1>
             <div className='options-container'>
                 <button className='optionbtn' onClick={() => handleOptionClick('Depression')}>Depression</button>
                 <button className='optionbtn'onClick={() => handleOptionClick('Frustration')}>Frustration</button>
@@ -44,7 +45,7 @@ function ChatBot() {
                     ))}
                 </div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="form-chatbot">
                     <input
                         type="text"
                         id="input"

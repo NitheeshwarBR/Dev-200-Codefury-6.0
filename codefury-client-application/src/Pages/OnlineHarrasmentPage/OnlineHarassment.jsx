@@ -75,11 +75,12 @@ function OnlineHarrasment() {
 
         try {
             console.log("uploading to server")
-            const data = { victimId: "650e74f9201567c21af0075d" || user._id, domain, description, phone, screenshots: urls }
+            const data = { victimId: user._id, domain, description, phone, screenshots: urls }
             console.log(data)
             await axios_client.post("/harassments/raise-complaint", data)
             alert("Success")
         } catch (err) {
+            alert("login required")
             console.log(err)
         }
     }
@@ -120,23 +121,9 @@ function OnlineHarrasment() {
 
 
 
-            <div className="container">
-
-
+            <div className="harrasment-container">
                 <div className='signup-page'>
 
-                    <Snackbar
-                        open={showSnackbar}
-                        autoHideDuration={3000}
-                        onClose={() => setShowSnackbar(false)}
-                    >
-                        <Alert
-                            onClose={() => setShowSnackbar(false)}
-                            severity={snackbarSeverity}
-                            sx={{ width: '100%' }}>
-                            {snapbarMessage}
-                        </Alert>
-                    </Snackbar>
                     <div className='signup-main'>
                         <div className='headers'>
                             <h2>Online Harrasment</h2>
@@ -147,9 +134,20 @@ function OnlineHarrasment() {
                         <div className="additional">
 
 
-                            <form>
+                            <form className='auth-from'>
+                                <Snackbar
+                                    open={showSnackbar}
+                                    autoHideDuration={3000}
+                                    onClose={() => setShowSnackbar(false)}
+                                >
+                                    <Alert
+                                        onClose={() => setShowSnackbar(false)}
+                                        severity={snackbarSeverity}
+                                        sx={{ width: '100%' }}>
+                                        {snapbarMessage}
+                                    </Alert>
+                                </Snackbar>
                                 <div className='additional'>
-
                                     <TextField
                                         required
                                         className='Extra'
@@ -219,29 +217,32 @@ function OnlineHarrasment() {
                                     />
                                 </div>
                                 <br></br>
+                                {
+                                    // isFileUploading &&
+                                    <div className="additional">
+                                        <LinearProgress variant="determinate" color="success" value={50 || fileUpoadProgress} size="large" sx={{ height: 10, borderRadius: 5, margin: "10px" }} />
+                                    </div>
 
+                                }
                                 <div className='additional'>
                                     <Button variant="contained" id="signupbtn" onClick={handleSubmitComplaint} >
                                         Submit Complaint
                                     </Button>
                                 </div>
                             </form>
-                            {
-                                // isFileUploading &&
-                                <div className="additional">
-                                    <LinearProgress variant="determinate" color="success" value={fileUpoadProgress} size="large" sx={{ height: 10, borderRadius: 5, margin: "10px" }} />
-                                </div>
 
-                            }
                         </div>
                     </div>
-                    <div className="image-preview-container">
-                        <h3 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Screenshots (Preview)</h3>
-                        {imagePreviews.map((previewUrl, index) => (
-                            <img key={index} src={previewUrl} alt={`Image ${index + 1}`} className="image-preview" style={{ width: '100%', height: '340px' }} />
-                        ))}
-                    </div>
+
                 </div>
+
+                <div className="image-preview-container">
+                    <h3 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Screenshots (Preview)</h3>
+                    {imagePreviews.map((previewUrl, index) => (
+                        <img key={index} src={previewUrl} alt={`Image ${index + 1}`} className="image-preview" style={{ width: '100%', height: '340px' }} />
+                    ))}
+                </div>
+
             </div>
         </>
 

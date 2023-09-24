@@ -1,0 +1,14 @@
+.therapists-container{
+    padding:20px;    
+}
+.therapists-head{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inputbox{
+    all: unset;
+    padding: 5px;
+    border-bottom: 2px solid;
+}

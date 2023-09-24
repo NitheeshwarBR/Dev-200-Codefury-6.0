@@ -79,6 +79,7 @@ function Authentication() {
             setOpen(true)
             console.log(data)
         } catch (err) {
+            alert(err.message)
             console.log(err)
         }
     }
@@ -97,7 +98,7 @@ function Authentication() {
                     <p>experience by completing the signup.</p>
                 </div>
                 <div className='additional'>
-                    <form>
+                    <form className='auth-from'>
                         <div className='additional'>
                             <TextField
                                 className='Extra'
@@ -149,7 +150,7 @@ function Authentication() {
                             <TextField
                                 className='Extra'
                                 required
-                                type='passwor'
+                                type='password'
                                 id='outlined-required'
                                 label='Password'
                                 value={password}
@@ -194,13 +195,15 @@ function Authentication() {
                     <p>by entering your <b>Login Credentials</b> </p>
                 </div>
                 <div className='additional'>
-                    <form>
+                    <form className='auth-from'>
                         <div className='additional'>
                             <TextField
                                 className='Extra'
                                 required
                                 id='outlined-required'
                                 label='Email'
+                                value={email}
+                                onChange={handleEmailNameChange}
                             />
                         </div>
                         <br/>
@@ -210,6 +213,8 @@ function Authentication() {
                                 required
                                 id='outlined-required'
                                 label='Password'
+                                value={password}
+                                onChange={handlePasswordNameChange}
                             />
                         </div>
                         <div>

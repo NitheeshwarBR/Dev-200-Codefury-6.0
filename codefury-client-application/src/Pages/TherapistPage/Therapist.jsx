@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import "./Therapists.css"
 
 function Therapist() {
     const [therapists, setTherapists] = useState([]);
@@ -22,14 +23,17 @@ function Therapist() {
     });
 
     return (
-        <div>
+        <div className="therapists-container">
+            <div className="therapists-head">
             <h2>Therapist List</h2>
             <input
+                className='inputbox'
                 type="text"
                 placeholder="Search by domain"
                 value={searchDomain}
                 onChange={handleSearchChange}
             />
+            </div>
             <ul>
                 {filteredTherapists.map(therapist => (
                     <li key={therapist._id}>

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Authentication from './Pages/AuthenticationPage/Authentication'
 import AppContext from '../src/contexts/AppContext';
 import { useState } from 'react';
@@ -23,13 +23,25 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<MainPage/>}/>
-          <Route path='/Auth' element={<Authentication/>} />
-          <Route path='/online-harassment' element={<OnlineHarrasment/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
+          {
+            !isLoggedIn && 
+            <Route path='/Auth' element={<Authentication/>} />
+          }
+          {
+            isLoggedIn && 
+            <Route path='/online-harassment' element={<OnlineHarrasment/>}/>
+          }
+          {
+            isLoggedIn && 
+            <Route path='/dashboard' element={<Dashboard/>}/>
+          }
           <Route path='/about-team' element={<AboutTeam/>}/>
           <Route path='/chat-Bot' element={<ChatBot/>}/>
           <Route path='/live-meditation' element={<LiveMeditation/>}/>
           <Route path='/therapist' element={<Therapist/>}/>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+
         </Routes>
 
       </div>
