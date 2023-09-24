@@ -1,0 +1,49 @@
+.main-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .signup-page {
+    display: flex;
+    width: 45%; /* Adjust as needed */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .image-preview-container {
+    width: 45%; /* Adjust as needed */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .signup-main {
+    width: 100%;
+  }
+  
+  .headers {
+    margin-bottom: 20px;
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  .additional {
+    margin-bottom: 10px;
+  }
+  
+  .Extra {
+    width: 100%;
+  }
+  
+  #signupbtn {
+    width: 100%;
+  }
+  
+  .image-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  

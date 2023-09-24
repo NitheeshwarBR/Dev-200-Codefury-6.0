@@ -9,6 +9,7 @@ import therapists from '../../Images/therapists.jpeg'
 import OnlineHarassment from '../../Images/onlineHarassment.png'
 import chatBOt from '../../Images/chatbot.jpg'
 import ImageCards from '../../Components/ImageCards'
+import Footer from '../../Components/Footer'
 const quotes=[
   {
     title:"Embrace struggle from it, resilience blooms like a lotus in adversity's pond; Just as a phoenix rises anew from ashes; we rise stronger from life's trials wearing scars as proof; of our tenacity and courage."
@@ -17,7 +18,7 @@ const quotes=[
     title:"Hope, a beacon in the darkest abyss, guides us back to the realm of light; Though a mere flicker it illuminates the path to recovery; Nurture that spark, for even the smallest flame ignites a roaring fire of determination."
   },
   {
-    title:"Each scar, a testament to battles fought and won. They're not marks of weakness but enduring symbols of strength. Embrace your scars; seen and unseen, for they tell the story of your resilience and triumphs."
+    title:"Each scar, a testament to battles fought and won.; They're not marks of weakness but enduring symbols of strength. Embrace your scars; seen and unseen, for they tell the story of your resilience and triumphs."
   },
   {
     title:"Strength isn't absence of pain it's enduring and growing through it. Rise after each fall; find purpose in struggles, and let your journey inspire others, Strength shines brightest in ; the darkest moments, lighting the way forward."
@@ -121,9 +122,7 @@ function MainPage() {
 
       </div>
 
-      <div className='footer'>
-        <p>&copy; 2023 Live Meditation. All rights reserved.</p>
-      </div>
+      <Footer copyrights="&copy; 2023 Live Meditation. All rights reserved." wishes="Crafted with ❤️ by team Dev@200"/>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import TeamCard from '../../Components/TeamCard';
-import userImage from '../../Images/user.png';
+import NitheeshwarImg from '../../Images/Nitheeshwar.jpg'
+import pavanBnImg from '../../Images/pavanbn.jpg'
+import userImage from '../../Images/user.png'
 import './AboutTeam.css'; // Import the CSS file for styling
 
 function AboutTeam() {
@@ -14,7 +16,7 @@ function AboutTeam() {
         <div>
           <TeamCard
             alt="Nitheeshwar Image"
-            image={userImage}
+            image={NitheeshwarImg}
             name="Nitheeshwar B R"
             description="I am a College Student pursuing Bachelor’s Degree in Computer Science and Engineering. I always dedicate myself to learning new technologies and use them to derive solutions for real-world problems, which helps me stay motivated and enthusiastic throughout the process. I possess a skill of adapting myself with other like-minded people and grasp insights from them."
             id="profile-cards"
@@ -23,7 +25,7 @@ function AboutTeam() {
         <div>
           <TeamCard
             alt="pavan b n iamge"
-            image={userImage}
+            image={pavanBnImg}
             name="Pavan B N"
             description="I am a College Student pursuing Bachelor’s Degree in Computer Science and Engineering. I always dedicate myself to learning new technologies and use them to derive solutions for real-world problems, which helps me stay motivated and enthusiastic throughout the process. I possess a skill of adapting myself with other like-minded people and grasp insights from them."
             id="profile-cards2"

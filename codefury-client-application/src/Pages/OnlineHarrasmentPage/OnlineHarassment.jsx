@@ -116,126 +116,136 @@ function OnlineHarrasment() {
 
     return (
         <>
-        <DashboardComponent/>
-        <div className='main-container'>
-        
-        <div className='signup-page'>
-        
-            <Snackbar
-                open={showSnackbar}
-                autoHideDuration={3000}
-                onClose={() => setShowSnackbar(false)}
-            >
-                <Alert
-                    onClose={() => setShowSnackbar(false)}
-                    severity={snackbarSeverity}
-                    sx={{ width: '100%' }}>
-                    {snapbarMessage}
-                </Alert>
-            </Snackbar>
-            <div className='signup-main'>
-                <div className='headers'>
-                    <h2>Online Harrasment</h2>
-                    <p>Empower yourself against the shadows of online harassment by bravely </p>
-                    <p>voicing your experiences</p>
-                    <p>and taking a stand for a safer digital world.</p>
+            <DashboardComponent />
+
+
+
+            <div className="container">
+
+
+                <div className='signup-page'>
+
+                    <Snackbar
+                        open={showSnackbar}
+                        autoHideDuration={3000}
+                        onClose={() => setShowSnackbar(false)}
+                    >
+                        <Alert
+                            onClose={() => setShowSnackbar(false)}
+                            severity={snackbarSeverity}
+                            sx={{ width: '100%' }}>
+                            {snapbarMessage}
+                        </Alert>
+                    </Snackbar>
+                    <div className='signup-main'>
+                        <div className='headers'>
+                            <h2>Online Harrasment</h2>
+                            <p>Empower yourself against the shadows of online harassment by bravely </p>
+                            <p>voicing your experiences</p>
+                            <p>and taking a stand for a safer digital world.</p>
+                        </div>
+                        <div className="additional">
+
+
+                            <form>
+                                <div className='additional'>
+
+                                    <TextField
+                                        required
+                                        className='Extra'
+                                        id="outlined-select-currency"
+                                        select
+                                        label="Domains"
+                                        defaultValue="whatsapp"
+                                        helperText="Please select Domain"
+                                        value={domain}
+                                        onChange={(e) => { setDomain(e.target.value) }}
+                                    >
+                                        {domains.map((option) => (
+                                            <MenuItem key={option.value} value={option.value}>
+                                                {option.label}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                </div>
+                                <div className='additional'>
+
+                                    <TextField
+                                        className='Extra'
+                                        required
+                                        id='outlined-required'
+                                        label='Phone'
+                                        value={phone}
+                                        onChange={(e) => { setPhone(e.target.value) }}
+                                    />
+                                </div>
+
+                                &nbsp;&nbsp;
+                                <div className='additional'>
+                                    <TextField
+                                        className='Extra'
+                                        id="outlined-textarea"
+                                        label="Description"
+                                        placeholder="description"
+                                        multiline
+                                        value={description}
+                                        onChange={(e) => { setDescription(e.target.value) }}
+                                    />
+
+                                </div>
+
+                                <br></br>
+                                <div className='additional'>
+                                    <TextField
+                                        className='Extra'
+                                        required
+                                        id='outlined-required'
+                                        label='profileLink'
+                                        value={profileLink}
+                                        onChange={(e) => { setProfileLink(e.target.value) }}
+
+                                    />
+                                </div>
+
+                                <br></br>
+                                <div className='additional'>
+                                    <Input
+                                        className='Extra'
+                                        required
+                                        type="file"
+                                        id='outlined-required'
+                                        inputProps={{ multiple: true }}
+                                        onChange={handleImageUpload}  // Specify accepted file types
+                                    />
+                                </div>
+                                <br></br>
+
+                                <div className='additional'>
+                                    <Button variant="contained" id="signupbtn" onClick={handleSubmitComplaint} >
+                                        Submit Complaint
+                                    </Button>
+                                </div>
+                            </form>
+                            {
+                                // isFileUploading &&
+                                <div className="additional">
+                                    <LinearProgress variant="determinate" color="success" value={fileUpoadProgress} size="large" sx={{ height: 10, borderRadius: 5, margin: "10px" }} />
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                    <div className="image-preview-container">
+                        <h3 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Screenshots (Preview)</h3>
+                        {imagePreviews.map((previewUrl, index) => (
+                            <img key={index} src={previewUrl} alt={`Image ${index + 1}`} className="image-preview" style={{ width: '100%', height: '340px' }} />
+                        ))}
+                    </div>
                 </div>
-
-                <form>
-                    <div className='additional'>
-
-                        <TextField
-                            required
-                            className='Extra'
-                            id="outlined-select-currency"
-                            select
-                            label="Domains"
-                            defaultValue="whatsapp"
-                            helperText="Please select Domain"
-                            value={domain}
-                            onChange={(e) => { setDomain(e.target.value) }}
-                        >
-                            {domains.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
-                    </div>
-                    <div className='additional'>
-
-                        <TextField
-                            className='Extra'
-                            required
-                            id='outlined-required'
-                            label='Phone'
-                            value={phone}
-                            onChange={(e) => { setPhone(e.target.value) }}
-                        />
-                    </div>
-
-                    &nbsp;&nbsp;
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            id="outlined-textarea"
-                            label="Description"
-                            placeholder="description"
-                            multiline
-                            value={description}
-                            onChange={(e) => { setDescription(e.target.value) }}
-                        />
-
-                    </div>
-
-                    <br></br>
-                    <div className='additional'>
-                        <TextField
-                            className='Extra'
-                            required
-                            id='outlined-required'
-                            label='profileLink'
-                            value={profileLink}
-                            onChange={(e) => { setProfileLink(e.target.value) }}
-
-                        />
-                    </div>
-
-                    <br></br>
-                    <div className='additional'>
-                        <Input
-                            className='Extra'
-                            required
-                            type="file"
-                            id='outlined-required'
-                            inputProps={{ multiple: true }}
-                            onChange={handleImageUpload}  // Specify accepted file types
-                        />
-                    </div>
-                    <br></br>
-
-                    <div className='additional'>
-                        <Button variant="contained" id="signupbtn" onClick={handleSubmitComplaint} >
-                            Submit Complaint
-                        </Button>
-                    </div>
-                </form>
-                {
-                    // isFileUploading &&
-                    <LinearProgress variant="determinate" color="success" value={fileUpoadProgress} size="large" sx={{ height: 10, borderRadius: 5, margin: "10px" }} />
-                }
             </div>
-            <div className="image-preview-container">
-                <h3 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Screenshots (Preview)</h3>
-                {imagePreviews.map((previewUrl, index) => (
-                    <img key={index} src={previewUrl} alt={`Image ${index + 1}`} className="image-preview" style={{ width: '100%', height: '340px' }} />
-                ))}
-            </div>
-
-
-        </div>
-        </div>
         </>
+
+
     );
 }
 
