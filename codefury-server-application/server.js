@@ -4,12 +4,13 @@ const port = process.env.PORT || 3030;
 const cors = require('cors');
 const dotenv = require('dotenv');
 const axios = require('axios');
-const apiKey = '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';
+// const apiKey = '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';
+const apiKey = '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';
 const apiUrl = 'https://api.openai.com/v1/engines/davinci/completions';
 
 dotenv.config()
 
-app.use(cors({ origin: ["http://localhost:3000"] }))
+app.use(cors({ origin: ["http://localhost:3000","https://mental-helath-and-well-being.netlify.app/"] }))
 app.use(express.json())
 
 const http = require("http");
@@ -80,7 +81,7 @@ app.use("/peerjs", peerServer);
 const { Server } = require("socket.io");
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:3000"
+        origin:[ "http://localhost:3000","https://mental-helath-and-well-being.netlify.app/"]
     }
 });
 
